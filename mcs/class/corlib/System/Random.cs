@@ -88,6 +88,8 @@ namespace System
 		protected virtual double Sample ()
 		{
 			int retVal;
+			int inext = this.inext;
+			int inextp = this.inextp;
 
 			if (++inext  >= 56) inext  = 1;
 			if (++inextp >= 56) inextp = 1;
@@ -98,6 +100,8 @@ namespace System
 				retVal += MBIG;
 
 			SeedArray [inext] = retVal;
+			this.inext = inext;
+			this.inextp = inextp;
 
 			return retVal * (1.0 / MBIG);
 		}
